@@ -16,5 +16,12 @@ final class APICallTest extends TestCase
 		$this->assertEquals($movies[0]->title, "Groundhog Day");
 		$this->assertEquals($movies[1]->title, "The Groundhogs");
 	}
+	public function testErrorNotFound() {
+		$caller = new APICall("secrets.json");
+		$caller->getMovies("!@##!");
+
+		
+		$this->assertEquals($caller->getMovies("!@##!"), NULL);
+	}
 }
 ?>

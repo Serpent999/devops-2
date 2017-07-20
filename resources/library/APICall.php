@@ -27,7 +27,13 @@ class APICall
 		$output = curl_exec($ch);
 		//TODO Handle bad status
 		$json_output = json_decode($output);
+		if(!isset($json_output->status_code))
+		
+		{
+	
 		return $json_output;
+		}
+		
 	}
 	public function sanitizeQuery($query) {
 		//TODO Sanitize query string
@@ -44,10 +50,12 @@ class APICall
 		$query = $this->movieQuery($search);
 		$output = $this->makeRequest($query);
 		$results = $output->results;
-
+              if(isset($output->results))
+			  {
 		$this->movies = array_map(function ($x) { return new Movie($x->title, $x->overview); }, $results);
 		$this->createTitleCorpus();
-		$this->createOverviewCorpus();
+		$this->createOverviewCorpus
+			  }
 	}
 
 	private function createTitleCorpus() {
