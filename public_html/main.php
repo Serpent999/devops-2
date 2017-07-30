@@ -5,8 +5,8 @@
 <?php
 include("resources/library/APICall.php");
 include("resources/library/MCAPI.php");
-
-$search = "groundhog";
+//Get data from custom search form
+$search = $_POST["args"];
 $api = new APICall("secrets.json");
 $mc = new MCAPI($api, $search, 3);
 $num_results = rand(0, 10);
