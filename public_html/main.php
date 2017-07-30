@@ -2,6 +2,7 @@
 <html>
 <head></head>
 <body>
+
 <?php
 include("resources/library/APICall.php");
 include("resources/library/MCAPI.php");
